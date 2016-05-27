@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	 <!-- {{{{{{{{{{{{{{{ Bean Creation for CsvParser }}}}}}}}}}}}}}}}}}}}}}}}}]-->
+	 
+	<bean id="csvParser" class="com.fsm.parserfactory.CsvParser">
+	
+		<property name="allElement" value="#{csvDocumentBean.allElem}"></property>
+		<property name="csvDocument" ref="csvDocumentBean"></property>
+		
+	</bean>
+	
+	 <bean id="csvDocumentBean" class="com.fsm.model.csv.CsvDocument" init-method="getCsvElements">
+		<property name="tokenizer" ref="csvTokenizerBean">		
+		</property>
+		<property name="docKeeper" ref="docKeeperBean">		
+		</property>
+		<property name="lines" value="#{readerBean.tagList}"></property>
+	</bean>
+	
+	
+	<bean id="csvTokenizerBean" class="com.fsm.tokenization.csv.MyCSVTokenizer">
+		<property name="DELIMITER" value="${Csv.seperator}"></property>
+		
+	</bean> 
+	
+	<bean id="docKeeperBean" class="com.fsm.model.csv.DocumentKeeper">
+	</bean>
+	
+	<bean id="CsvOutputBean" class="com.fsm.model.output.CsvOutputPrinter">
+	</bean>
+	 
+	 <!-- {{{{{{{{{{{{{{{ Bean Creation for file Reader }}}}}}}}}}}}}}}}}}}}}}}}}]-->
+	 
+	<bean id="readerBean" class="com.fsm.model.reader.ParserReader" >
+		<property name="filePath" value="${file.path}"></property>
+	</bean>
+	
+	<!-- {{{{{{ Providing the Property file which store the file path }}}}}}}}}}}]-->
+	
+	<bean id="myFilePath" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>filePaths.properties</value>
+		</property>
+	</bean>
+	
+	
+	<!-- {{{{{{{{{{{{{{{ Bean Creation for XML Parser }}}}}}}}}}}}}}}}}}}}}}}}}]-->
+	
+	<bean id="xmlParser" class="com.fsm.parserfactory.XmlParser" >
+		<property name="document" ref="xmlDocumentBean"></property>
+		<property name="rootElement" value="#{xmlDocumentBean.rootElement}"></property>
+	</bean>
+	<bean id="xmlDocumentBean" class="com.fsm.model.xml.XmlDocument" init-method="getElement">
+		<property name="tokenizer">
+			<bean class="com.fsm.tokenization.xml.MyXmlTokenizer">
+			</bean>
+		</property>
+		<property name="treeBuilder">
+			<bean class="com.fsm.model.xml.xmltree.XmlTreeBuilder">
+			</bean>
+		</property>
+		<property name="xmlReader" ref="readerBean"></property>
+	</bean>
+	
+	<bean id="XmlOutputBean" class="com.fsm.model.output.XmlOutputPrinter">
+	</bean>
+</beans>

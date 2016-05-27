@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spocosy version="1.0" responsetime="2013-05-17 04:17:11" exec="0.179">
+	<query-response requestid="" service="objectquery">
+		<sport name="Baseball" enetSportCode="ba" del="no" n="0"
+			ut="2012-05-15 17:55:54" id="26">
+			<tournament_template name="USA 1" sportFK="26"
+				gender="male" enetID="0" del="no" n="0" ut="2012-07-04 13:46:12" id="426">
+				<tournament name="2013" tournament_templateFK="426"
+					enetSeasonID="0" del="no" locked="none" n="0" ut="2013-02-08 12:07:28"
+					id="7540">
+					<tournament_stage name="MLB" tournamentFK="7540"
+						countryFK="16" gender="male" enetID="0" startdate="2013-04-01"
+						enddate="2013-09-29" del="no" locked="none" n="163"
+						ut="2013-04-24 12:27:29" id="830787">
+						<properties>
+							<property object="tournament_stage" objectFK="830787"
+								type="metadata" name="Live" value="yes" del="no" n="0"
+								ut="2013-04-24 12:27:29" id="17250622"></property>
+						</properties>
+					</tournament_stage>
+				</tournament>
+			</tournament_template>
+		</sport>
+	</query-response>
+</spocosy>

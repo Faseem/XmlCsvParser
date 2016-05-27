@@ -1,0 +1,24 @@
+<company>	<staff mmsdp="1001" mmp="WE23">		<firstname>
+</firstname>
+	
+		<lastname>mook&lt;kim</lastname>
+		<nickname>
+			<n3>
+				<n1 id="1001" mmp="WE23">mmm</n1>
+			</n3>
+			<n2 id="1002" mmp="WE24">ggg</n2>>
+		</nickname>
+		<salary>100000</salary>
+		
+	</staff>
+	<staff id="2001" mmp="WE24">
+
+		<firstname>low</firstname>
+		<lastname>yin&lt;fong</lastname>
+		<nickname>fong &apos;fong</nickname>
+		<salary>200&gt;000</salary>
+		<salary>200&amp;000</salary>>
+		<salary>200&quot;000</salary>
+		adsasdasda
+	</staff>
+</company>
